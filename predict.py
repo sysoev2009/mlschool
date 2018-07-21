@@ -47,6 +47,7 @@ i = 0
 while i < len(spectrograms):
 	spectrogram = image.load_img('test/'+spectrograms[i], target_size=(img_width, img_height, 3), grayscale=False)
 	x = image.img_to_array(spectrogram)
+	x /= 255
 	x = np.expand_dims(x, axis=0)
 	class_probability = model.predict(x)
 	prediction_class = model.predict_classes(x)
